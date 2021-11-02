@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace WormsWorld
 {
-    class MoveAction : Action
+    class MoveAction : IAction
     {
-        public static readonly MoveAction RIGHT = new(1, 0);
-        public static readonly MoveAction LEFT = new(-1, 0);
-        public static readonly MoveAction UP = new(0, 1);
-        public static readonly MoveAction DOWN = new(0, -1);
+        public static readonly MoveAction Right = new(1, 0);
+        public static readonly MoveAction Left = new(-1, 0);
+        public static readonly MoveAction Up = new(0, 1);
+        public static readonly MoveAction Down = new(0, -1);
 
         private readonly Coord _move;
 
@@ -22,7 +22,7 @@ namespace WormsWorld
             _move = new Coord(x, y);
         }
 
-        public Coord getAction()
+        public Coord GetAction()
         {
             return _move;
         }

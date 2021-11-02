@@ -1,46 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WormsWorld
 {
     class Coord
     {
-        private int x;
-        private int y;      
+        private readonly int _x;
+        private readonly int _y;
 
         public Coord(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            _x = x;
+            _y = y;
         }
 
         public Coord(Coord coord)
         {
-            x = coord.x;
-            y = coord.y;
+            _x = coord._x;
+            _y = coord._y;
         }
 
-        public static Coord operator +(Coord a, Coord b) => new Coord(a.x + b.x, a.y + b.y);
-        public static Coord operator -(Coord a, Coord b) => new Coord(a.x - b.x, a.y - b.y);
+        public static Coord operator +(Coord a, Coord b) => new(a._x + b._x, a._y + b._y);
+        public static Coord operator -(Coord a, Coord b) => new(a._x - b._x, a._y - b._y);
 
         public override bool Equals(object obj)
         {
             return obj is Coord coord &&
-                   x == coord.x &&
-                   y == coord.y;
+                   _x == coord._x &&
+                   _y == coord._y;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(x, y);
+            return HashCode.Combine(_x, _y);
         }
 
         public override string ToString()
         {
-            return $"({x}, {y})";
+            return $"({_x}, {_y})";
         }
     }
 }

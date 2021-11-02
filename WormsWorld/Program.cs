@@ -6,7 +6,7 @@ namespace WormsWorld
     {
         static void Main(string[] args)
         {
-            World.start();
+            World.Start();
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,37 +8,38 @@ namespace WormsWorld
 {
     class World
     {
-        private static readonly List<Worm> worms = new();
-        private static int step = 0;
-        public static void start()
+        private static readonly List<Worm> Worms = new();
+        private static int _step;
+
+        public static void Start()
         {
             var worm = new Worm("John", new Coord(0, 0));
-            worms.Add(worm);
-            FileUtil.clearLog();
-            runLife();
+            Worms.Add(worm);
+            FileUtil.ClearLog();
+            RunLife();
         }
 
-        private static void runLife()
+        private static void RunLife()
         {
-            while (step < 20)
+            while (_step < 20)
             {
-                foreach (Worm worm in worms)
+                foreach (var worm in Worms)
                 {
-                    Action action = worm.getAction(step);
-                    if(validateAction(action))
+                    var action = worm.GetAction(_step);
+                    if (ValidateAction(action))
                     {
-                        worm.makeAction(action);
+                        worm.MakeAction(action);
                     }
                 }
-                FileUtil.log(worms);
-                step++;
+
+                FileUtil.Log(Worms);
+                _step++;
             }
         }
 
-        private static bool validateAction(Action action)
+        private static bool ValidateAction(IAction action)
         {
             return true;
         }
-
     }
 }
